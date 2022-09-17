@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="alert alert-success">Tasks {{tasks}}</div>
+
+
+
+
+
+<form method="POST" action="/">
+	{%csrf_token%}
+	{{form.title}}
+	<input type="submit" name="new_task" value="Submit">
+</form>
+{% for task in tasks %}
+<div><p>{{task}}</p></div>
+
+{% endfor %}
+
+{%endblock content%}
