@@ -1,21 +1,29 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content%}
 
-<div class="alert alert-success">Tasks {{tasks}}</div>
 
+   <div class="center-column">
+      
+<div class="alert alert-success"><strong>Tasks</strong> </div>
 
-
-
-
-<form method="POST" action="/">
-	{%csrf_token%}
-	{{form.title}}
-	<input type="submit" name="new_task" value="Submit">
+<form method="POST" >
+   {%csrf_token%}
+   <div> {{form.title}}</div>
+   <div> 
+      <div><input class="card-body" type="submit" name="new_task" value="Submit" ></div>
+</div>
 </form>
+<div class = 'todo-list'>
 {% for task in tasks %}
-<div><p>{{task}}</p></div>
-
+<div class="item-row">{{task}}<br>
+<a class="btn btn-outline-success" href="{% url 'update' task.id %}">Edit</a>
+<a class="btn btn-outline-danger" href="{% url 'delete' task.id %}">Delete</a>
+</div>
 {% endfor %}
+   </div>
+</div>
+
 
 {%endblock content%}

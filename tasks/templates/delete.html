@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<form method="POST">
+	{%csrf_token%}
+	
+	<div>
+		<p>Are You sure you want to delete task <b>{{obj}}</b> <strong>{{task}}</strong></p>
+	<button class="btn btn-danger" >Yes, Delete!</button>
+	<a href="/" class="btn btn-dark"> Cancel </a>
+</div>
+</form>
+
+
+{%endblock content%}

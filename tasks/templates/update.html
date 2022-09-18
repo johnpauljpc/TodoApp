@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h3>Update</h3>
+
+<form method="POST" action="{% url 'update' obj.id %}">
+	{%csrf_token%}
+	{{form.title}}
+	<input type="submit" name="update" value="Submit">
+
+</form>
+
+{%endblock%}
