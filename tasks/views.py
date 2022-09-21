@@ -54,3 +54,23 @@ def delete(request, pk):
 	
 
 	return render(request, 'delete.html', {'obj':obj})
+
+
+def complete(request, pk):
+	obj = Task.objects.get(id = pk)
+	option = obj.complete
+	print("This is option  ", obj)
+	ts = str(obj)
+	if option == True:
+		obj.complete = False
+		
+		obj.save()
+		messages.info(request, "Task (" + ts + ") Not done")
+		return redirect('/')
+	else:
+		obj.complete = True
+		obj.save()
+		messages.success(request, "Completed task")
+		return redirect('/')
+
+	return render(request, 'index.html')

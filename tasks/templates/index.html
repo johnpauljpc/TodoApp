@@ -4,26 +4,62 @@
 {% block content%}
 
 
+
    <div class="center-column">
+      {% for msg in messages %}
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <center><strong>{{msg}}</strong></center> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{%endfor%}
       
-<div class="alert alert-success"><strong>Tasks</strong> </div>
+<div class="alert alert-success" style="border-top: 20px red;"><strong>Tasks</strong> </div>
 
 <form method="POST" >
    {%csrf_token%}
-   <div> {{form.title}}</div>
-   <div> 
-      <div><input class="card-body" type="submit" name="new_task" value="Submit" ></div>
-</div>
+   <div> {{form|crispy}}</div>
+   <div>
+      <input style="color: white; font-weight: bolder;" class="btn btn-success" type="submit" value="Save Task" name="">
+   </div>
 </form>
-<div class = 'todo-list'>
+<div class = 'item-row'>
 {% for task in tasks %}
-<div class="item-row">{{task}}<br>
-<a class="btn btn-outline-success" href="{% url 'update' task.id %}">Edit</a>
-<a class="btn btn-outline-danger" href="{% url 'delete' task.id %}">Delete</a>
+<div class="item-row">
+   <div class="row">
+
+<div class="col-6">
+      {% if task.complete == True %}
+  <font style="border-bottom: 1px solid green;" > {{task}} </font><small class="text-muted"><sub style="color:green;">done</sub></small>
+      {%else%}
+      <span>{{task}} <small class="text-muted"><sub style="color:tomato;">not done</sub></small></span>
+      {% endif %}
+</div>
+
+<div class="col-6 d-flex justify-content-end">
+   <a class="btn btn-sm btn-success" href="{% url 'update' task.id %}">Edit</a>
+<a class="btn btn-sm btn-danger mx-2" href="{% url 'delete' task.id %}">Delete</a>
+
+{% if task.complete == True %}
+<a style="font-weight: 1000; border-color:white; text-decoration: none; color: green; font-family: Arial; "  href="{% url 'complete' task.id %}"><font class=" px-1" style="border: 2px solid #d4edda; font-size: 20px;"> &#9745;</font></a>
+
+{%else%}
+<a  href="{% url 'complete' task.id %}" style=" font-family: Arial; text-decoration: none; "><font class=" px-1" style="border: 2px solid #d4eddf; font-size: 20px; color: /*navajowhite*/ green; "> &#9744;</font></a>
+{% endif %}
+</div>
+
+
+</div>
+
+
+
+
+
 </div>
 {% endfor %}
    </div>
-</div>
 
+   <footer class="text-center mt-2 " >made with <b class="text-danger" style="font-size: 20px">&hearts;</b> by Johnpaul</footer>
+</div>
 
 {%endblock content%}

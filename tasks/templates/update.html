@@ -1,13 +1,48 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
+
+{% comment %}
 {% block content%}
-<h3>Update</h3>
+<div style="min-height: 70%;" class= " ">
+	<div class=" d-flex justify-content-center" >
+	
 
 <form method="POST" action="{% url 'update' obj.id %}">
 	{%csrf_token%}
-	{{form.title}}
-	<input type="submit" name="update" value="Submit">
+	<div class="input">{{form|crispy}}</div>
+	<input class="btn btn-warning" type="submit" name="update" value="Save Update">
 
 </form>
+</div>
+</form>
 
-{%endblock%}
+<div class = "d-flex justify-content-center" >
+<footer style="position: absolute; bottom: 10px" class="  ">made with <b class="text-danger">&hearts;</b> by Johnpaul</footer>
+</div>
+</div>
+</div>
+
+
+{%endblock content%} {% endcomment %}
+
+{% block content%}
+<div style="min-height: 70%;" class= " center-column1 ">
+	<div class=" d-flex justify-content-center" >
+<form method="POST">
+	{%csrf_token%}
+	
+	<div>
+		<p class="mb-4" style=" width: 400px"><h3>Update Your task</h3> <b>{{form|crispy}}</b> <strong>{{task}}</strong></p>
+	<button class="btn btn-success" >Save Update</button>
+	<a href="/" class="btn btn-dark"> Don't save, Go back </a>
+</div>
+</form>
+
+<footer style="position: absolute; bottom: 10px" class="text-md-center ">made with <b class="text-danger" style="font-size: 20px">&hearts;</b> by Johnpaul</footer>
+</div>
+</div>
+{%endblock content%}
+
+<footer class="text-center mt-2 " >made with <b class="text-danger" style="font-size: 20px">&hearts;</b> by Johnpaul</footer>
+</div>

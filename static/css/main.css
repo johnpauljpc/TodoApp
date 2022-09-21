@@ -16,26 +16,38 @@
 	}
 
 	.submit{
-		background-color: #6BA3E8;
+		/*background-color: green; */
+		border-radius: 100px;
+  	}
+
+
+	.center-column1{
+		max-width:600px;
+		height: 600px;
+		margin: auto;
+		padding:20px;
+		background-color: #fff;
+		border-radius: 10px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
 	}
 
 	.center-column{
-		width:600px;
+		max-width:600px;
 		margin: 20px auto;
 		padding:20px;
 		background-color: #fff;
-		border-radius: 3px;
+		border-radius: 8px;
 		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
 	}
 
 	.item-row{
-		background-color: #906abd;
-		margin: 10px;
+		background-color: whitesmoke; /*#d4edda#906abd*/;
+		margin: 5px;
 		padding: 20px;
 		border-radius: 3px;
-		color: #fff;
+		/*color: #fff;*/
 		font-size: 16px;
-		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+		box-shadow: 0px -1px 5px -4px rgba(0,0,0,0.75);
 	}
 
 	.btn-danger{
