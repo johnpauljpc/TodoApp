@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-2xjh6y$f_dxx@rz^p%z58@pm*4y)il!-smm$77iy_1$w^eczo)
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-8691.up.railway.app']
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'tasks',
     'crispy_forms',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'TodoApp.urls'
