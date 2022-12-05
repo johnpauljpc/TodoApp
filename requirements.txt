@@ -7,3 +7,4 @@ sqlparse==0.4.3
 tzdata==2022.6
 whitenoise==6.2.0
 django-crispy-forms==1.14.0
+django-cors-headers==3.13.0
